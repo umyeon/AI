@@ -17,7 +17,6 @@
 --border:#222;
 --text:#f5f5f5;
 --muted:#a1a1aa;
---tag:#67e8f9;
 --radius:12px;
 }
 
@@ -37,8 +36,6 @@ margin:auto;
 padding:22px 16px 40px;
 }
 
-/* 타이틀 */
-
 header h1{
 font-family:'KBLJumpextended',sans-serif;
 font-size:30px;
@@ -53,8 +50,6 @@ text-align:right;
 margin-bottom:26px;
 }
 
-/* 설명 */
-
 .lead{
 font-size:15px;
 margin-bottom:16px;
@@ -65,13 +60,9 @@ color:#d4d4d8;
 margin-top:26px;
 }
 
-/* 섹션 */
-
 .section{
 margin-top:46px;
 }
-
-/* 소제목 */
 
 .section-title{
 display:flex;
@@ -87,8 +78,6 @@ width:3px;
 height:22px;
 background:#fff;
 }
-
-/* 카드 */
 
 .grid{
 display:flex;
@@ -121,17 +110,6 @@ flex-direction:column;
 gap:4px;
 }
 
-.badge{
-display:inline-block;
-font-size:12px;
-padding:4px 9px;
-border-radius:999px;
-background:var(--tag);
-color:#000;
-font-weight:600;
-width:fit-content;
-}
-
 .title{
 font-size:18px;
 font-weight:600;
@@ -140,6 +118,11 @@ font-weight:600;
 .author{
 font-size:15px;
 color:var(--muted);
+}
+
+.call{
+font-size:14px;
+color:#9ca3af;
 }
 
 </style>
@@ -201,36 +184,36 @@ AI가 바꾸는 세계
 <div class="card" onclick="goLibrary('어느날 미래가 도착했다')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788936480837.jpg">
 <div class="info">
-<span class="badge">AI 인문</span>
 <div class="title">어느날 미래가 도착했다</div>
 <div class="author">우숙영</div>
+<div class="call">001.3-우56ㅇ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('AI는 인간을 먹고 자란다')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788965967149.jpg">
 <div class="info">
-<span class="badge">AI 사회</span>
 <div class="title">AI는 인간을 먹고 자란다</div>
 <div class="author">마크 그레이엄 외</div>
+<div class="call">321.5-그294ㅇ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('경험의 멸종')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167742063.jpg">
 <div class="info">
-<span class="badge">기술 비평</span>
 <div class="title">경험의 멸종</div>
 <div class="author">크리스틴 로젠</div>
+<div class="call">331.544-로74ㄱ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('안티 사피엔스')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167374288.jpg">
 <div class="info">
-<span class="badge">소설</span>
 <div class="title">안티 사피엔스</div>
 <div class="author">이정명</div>
+<div class="call">813.7-이74ㅇ</div>
 </div>
 </div>
 
@@ -252,36 +235,36 @@ AI가 바꾸는 세계
 <div class="card" onclick="goLibrary('AI, 인문학에 길을 묻다')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791173351396.jpg">
 <div class="info">
-<span class="badge">AI 인문</span>
 <div class="title">AI, 인문학에 길을 묻다</div>
 <div class="author">최재운</div>
+<div class="call">001.3-최73ㅇ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('도덕적인 AI')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791194330639.jpg">
 <div class="info">
-<span class="badge">AI 윤리</span>
 <div class="title">도덕적인 AI</div>
 <div class="author">월터 시넛암스트롱 외</div>
+<div class="call">004.73019-암57ㄷ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('낯섦과 공존')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791165384630.jpg">
 <div class="info">
-<span class="badge">AI 인문</span>
 <div class="title">낯섦과 공존</div>
 <div class="author">김태원</div>
+<div class="call">304-김883ㄴ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('기억의 낙원')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788901285498.jpg">
 <div class="info">
-<span class="badge">소설</span>
 <div class="title">기억의 낙원</div>
 <div class="author">김상균</div>
+<div class="call">813.7-김52ㄱ</div>
 </div>
 </div>
 
@@ -303,36 +286,36 @@ AI와 함께 살아갈 미래
 <div class="card" onclick="goLibrary('AI를 압도하는 내면 경쟁력')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191462357.jpg">
 <div class="info">
-<span class="badge">AI 인간</span>
 <div class="title">AI를 압도하는 내면 경쟁력</div>
 <div class="author">이헌주</div>
+<div class="call">181.7-이94ㅇ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('생각의 주도권을 디자인하라')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791194508236.jpg">
 <div class="info">
-<span class="badge">AI 사고</span>
 <div class="title">생각의 주도권을 디자인하라</div>
 <div class="author">박용후</div>
+<div class="call">325.211-박65ㅅ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('개의 설계사')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791166687372.jpg">
 <div class="info">
-<span class="badge">소설</span>
 <div class="title">개의 설계사</div>
 <div class="author">단요</div>
+<div class="call">813.7-단65ㄱ</div>
 </div>
 </div>
 
 <div class="card" onclick="goLibrary('나 같은 기계들')">
 <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954694063.jpg">
 <div class="info">
-<span class="badge">SF</span>
 <div class="title">나 같은 기계들</div>
 <div class="author">이언 매큐언</div>
+<div class="call">843.6-매876ㄴ</div>
 </div>
 </div>
 
