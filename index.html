@@ -1,210 +1,241 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>미래가 도착했습니다</title>
 
 <style>
-/* 폰트 */
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/pretendard/variable.css');
 
-body {
-  margin:0;
-  background:#000;
-  color:#f5f5f5;
-  font-family:'Pretendard',sans-serif;
-}
-.wrap {
-  max-width:720px;
-  margin:auto;
-  padding:24px 16px 60px;
+/* Gmarket Sans */
+@font-face {
+font-family: 'GmarketSans';
+font-weight: 300;
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
 }
 
-/* HERO 영역 */
-header{
-  background:#0b0b0b;
-  border-radius:16px;
-  padding:24px;
-  margin-bottom:50px; /* 간격 늘림 */
-  display:flex;
-  flex-direction:column;
-  gap:8px;
+@font-face {
+font-family: 'GmarketSans';
+font-weight: 500;
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
 }
-header h1{
-  font-size:36px;
-  font-weight:700;
-  text-align:left;
-  margin:0;
+
+@font-face {
+font-family: 'GmarketSans';
+font-weight: 700;
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
 }
-header .subtitle-main{
-  font-size:33px;
-  font-weight:600;
-  text-align:right;
-  margin:0;
-  color:#e5e7eb;
+
+body{
+margin:0;
+background:#000;
+color:#f5f5f5;
+font-family:'GmarketSans', sans-serif;
+}
+
+.wrap{
+max-width:720px;
+margin:auto;
+padding:24px 16px 60px;
+}
+
+/* HERO */
+
+.hero{
+background:#0b0b0b;
+border-radius:16px;
+padding:28px 24px;
+margin-bottom:28px;
+}
+
+.hero h1{
+font-size:36px;
+font-weight:700;
+margin:0;
+text-align:left;
+}
+
+.hero-sub{
+font-size:28px;
+font-weight:500;
+text-align:right;
+color:#e5e7eb;
+margin-top:6px;
 }
 
 /* 설명 영역 */
-.lead{
-  font-size:15px;
-  line-height:1.8;
-  margin-bottom:24px; /* 간격 늘림 */
-  color:#d4d4d8;
-}
-.lead strong{
-  color:#fff;
-  font-weight:600;
+
+.description{
+margin-top:36px;
+font-size:15px;
+line-height:1.85;
+color:#d4d4d8;
 }
 
-/* 2번째 문단 온점/반점 기준 행바꿈 */
-.lead.break::after{
-  content:"";
-  display:block;
+.description p{
+margin-bottom:22px;
 }
 
-/* 표지 클릭 안내 영역 */
-.click-area{
-  border:1px solid #444;
-  border-radius:12px;
-  padding:12px;
-  margin-top:28px;
-  text-align:center;
-  font-size:15px;
-  color:#e5e7eb;
-  background:#0d0d0d;
+/* 클릭 안내 */
+
+.notice{
+border:1px solid #3a3a3a;
+border-radius:12px;
+padding:12px 16px;
+font-size:14px;
+text-align:center;
+color:#e5e7eb;
+margin:12px 0 42px 0;
+background:#0c0c0c;
 }
 
 /* 섹션 */
+
 .section{
-  margin-top:80px;
+margin-top:80px;
 }
 
-/* 소제목 */
 .section-title{
-  font-size:17px;
-  font-weight:500;
-  line-height:1.3;
-  margin-bottom:18px;
-}
-.section-title span{
-  display:inline-block;
-  background:#fff;
-  width:4px;
-  height:20px;
-  margin:0 6px;
-  vertical-align:middle;
-  border-radius:2px;
-}
-.section-title::before{
-  content:"🧠";
-  margin-right:6px;
+font-size:18px;
+font-weight:500;
+margin-bottom:18px;
+line-height:1.3;
 }
 
-/* 카드 리스트 */
-.grid{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
+.section-title span{
+display:inline-block;
+width:4px;
+height:20px;
+background:#fff;
+margin:0 6px;
+vertical-align:middle;
+border-radius:2px;
 }
 
 /* 카드 */
+
+.grid{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
 .card{
-  display:flex;
-  gap:12px;
-  background:#0b0b0b;
-  border:1px solid #222;
-  border-radius:12px;
-  padding:12px;
-  align-items:center;
-  cursor:pointer;
-  transition:transform .2s, box-shadow .2s;
+display:flex;
+gap:12px;
+background:#0b0b0b;
+border:1px solid #222;
+border-radius:12px;
+padding:12px;
+align-items:center;
+cursor:pointer;
+transition:all .2s;
 }
-.card:active{
-  transform:scale(0.97);
-}
+
 .card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 16px rgba(0,0,0,0.5);
+transform:translateY(-2px);
+box-shadow:0 6px 14px rgba(0,0,0,0.5);
 }
 
-/* 표지 */
 .cover{
-  width:70px;
-  height:96px;
-  object-fit:contain;
-  background:#000;
-  border-radius:6px;
-  transition:transform .25s;
-}
-.card:hover .cover{
-  transform:scale(1.06);
+width:70px;
+height:96px;
+object-fit:contain;
+border-radius:6px;
+background:#000;
 }
 
-/* 텍스트 영역 */
 .info{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
+display:flex;
+flex-direction:column;
+gap:2px;
 }
+
 .title{
-  font-size:18px;
-  font-weight:600;
+font-size:18px;
+font-weight:500;
 }
+
 .author{
-  font-size:14px;
-  color:#a1a1aa;
+font-size:14px;
+color:#a1a1aa;
 }
+
 .call{
-  font-size:14px;
-  color:#9ca3af;
+font-size:14px;
+color:#9ca3af;
 }
+
 </style>
 
 <script>
+
 function goLibrary(title){
-  try{navigator.clipboard.writeText(title);}catch(e){}
-  const query=encodeURIComponent(title);
-  window.open(`https://umyeon.seocholib.or.kr/TotalSearch?keyword=${query}`,'_blank');
+
+try{
+navigator.clipboard.writeText(title)
+}catch(e){}
+
+const query=encodeURIComponent(title)
+
+window.open(`https://umyeon.seocholib.or.kr/TotalSearch?keyword=${query}`,'_blank')
+
 }
+
 </script>
+
+</head>
 
 <body>
 
 <main class="wrap">
 
-<header>
-<h1>미래가 도착했습니다</h1>
-<div class="subtitle-main">AI 시대를 준비하는 인문학</div>
+<!-- HERO -->
 
-<p class="lead">
-AI는 <strong>인간보다 빠르게 계산</strong>하고<br>
-<strong>더 많은 정보를 기억</strong>합니다.
+<div class="hero">
+
+<h1>미래가 도착했습니다</h1>
+<div class="hero-sub">AI 시대를 준비하는 인문학</div>
+
+<div class="description">
+
+<p>
+AI는 인간보다 빠르게 계산하고 더 많은 정보를 기억합니다.
 </p>
-<p class="lead break">
-그렇다면 우리는 <strong>무엇을 생각하고</strong>,<br>
-어떤 <strong>선택을 하게 될까요</strong>?
+
+<p>
+그렇다면 우리는 무엇을 생각하고, 어떤 선택을 해야 할까요?
 </p>
-<p class="lead">
-이미 우리 곁에 도착한 AI 시대를 이해하기 위해, <strong>인문학은 다시 질문</strong>을 던집니다.<br>
-기술이 바꾸는 세계 속에서 <strong>인간다움</strong>은 무엇인지,<br>
-그리고 우리는 AI와 어떤 <strong>미래</strong>를 만들어갈지에 대한 사유를 담았습니다.
+
+<p>
+이미 우리 곁에 도착한 AI 시대를 이해하기 위해 인문학은 묻습니다.<br>
+기술이 바꾸는 세계 속에서 인간다움은 무엇인지,<br>
+우리는 AI와 어떤 미래를 만들어갈 것인지.
 </p>
-<p class="lead">
+
+<p>
 ‘이미 도착한 미래’, ‘인간이라는 질문’, ‘공존을 준비하다’<br>
 세 가지 주제로 AI 시대를 바라보는 인문학적 시선을 소개합니다.
 </p>
 
-<div class="click-area">
+</div>
+
+</div>
+
+<div class="notice">
 📌 표지를 클릭하면 책 제목이 복사되고 도서관 검색 페이지로 이동합니다.
 </div>
-</header>
+
 
 <!-- SECTION 1 -->
+
 <section class="section">
+
 <div class="section-title">
-이미 도착한 미래 <span></span> AI가 바꾸는 세계
+🚀 이미 도착한 미래 <span></span> AI가 바꾸는 세계
 </div>
+
 <div class="grid">
 
 <div class="card" onclick="goLibrary('어느날 미래가 도착했다')">
@@ -246,11 +277,15 @@ AI는 <strong>인간보다 빠르게 계산</strong>하고<br>
 </div>
 </section>
 
+
 <!-- SECTION 2 -->
+
 <section class="section">
+
 <div class="section-title">
-인간이라는 질문 <span></span> 시대의 인간다움
+🧠 인간이라는 질문 <span></span> AI 시대의 인간다움
 </div>
+
 <div class="grid">
 
 <div class="card" onclick="goLibrary('AI, 인문학에 길을 묻다')">
@@ -292,11 +327,15 @@ AI는 <strong>인간보다 빠르게 계산</strong>하고<br>
 </div>
 </section>
 
+
 <!-- SECTION 3 -->
+
 <section class="section">
+
 <div class="section-title">
-공존을 준비하다 <span></span> AI와 함께 살아갈 미래
+🤝 공존을 준비하다 <span></span> AI와 함께 살아갈 미래
 </div>
+
 <div class="grid">
 
 <div class="card" onclick="goLibrary('AI를 압도하는 내면 경쟁력')">
@@ -339,5 +378,6 @@ AI는 <strong>인간보다 빠르게 계산</strong>하고<br>
 </section>
 
 </main>
+
 </body>
 </html>
