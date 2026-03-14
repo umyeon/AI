@@ -24,7 +24,9 @@
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
 }
 
-*{ box-sizing:border-box; }
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -43,64 +45,67 @@ body{
 .hero{
   background:#0b0b0b;
   border-radius:16px;
-  padding:28px 20px 32px;
+  padding:28px 18px 32px;
   margin-bottom:28px;
   overflow:hidden;
 }
 
 .hero-head{
-  margin-bottom:28px;
+  margin-bottom:30px;
 }
 
-.hero-top{
+.hero-row-top{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
-  gap:10px;
+  gap:16px;
 }
 
-.hero-main{
+.hero-line{
   margin:0;
   font-weight:700;
   line-height:0.9;
-  letter-spacing:-0.05em;
+  letter-spacing:-0.06em;
   color:#f2f2f2;
-}
-
-.hero-line1{
-  font-size:clamp(52px, 16vw, 108px);
+  font-size:clamp(50px, 16vw, 108px);
   white-space:nowrap;
 }
 
+.hero-line1{
+  text-align:left;
+}
+
+.hero-line2-wrap{
+  display:flex;
+  justify-content:flex-end; /* 오른쪽 정렬 */
+  margin-top:18px;          /* 두 줄 간격 확대 */
+}
+
 .hero-line2{
-  display:block;
-  margin-top:10px;
-  margin-left:clamp(14px, 5vw, 64px);
-  font-size:clamp(40px, 12.8vw, 96px);
-  white-space:nowrap; /* 도착했습니다 줄바꿈 방지 */
+  text-align:right;
 }
 
 .hero-sub{
-  margin-top:10px;
   flex:0 0 auto;
-  font-size:clamp(10px, 2.2vw, 14px);
-  line-height:1.35;
+  margin-top:12px;
+  margin-left:10px;
+  font-size:clamp(13px, 3vw, 21px);
+  line-height:1.2;
   color:#d4d4d8;
-  white-space:nowrap; /* 모바일에서 한 줄 유지 */
-  text-align:left;
-  letter-spacing:-0.02em;
+  white-space:nowrap;
+  letter-spacing:-0.03em;
 }
 
 /* 설명 영역 */
 .description{
-  margin-top:12px;
+  margin-top:18px;
   font-size:15px;
-  line-height:1.85;
+  line-height:1.9;
   color:#d4d4d8;
 }
 
 .description p{
-  margin-bottom:22px;
+  margin:0 0 22px 0;
 }
 
 /* 클릭 안내 */
@@ -190,38 +195,60 @@ body{
   color:#9ca3af;
 }
 
-/* 작은 모바일 대응 */
-@media (max-width:480px){
+/* 모바일 대응 */
+@media (max-width:560px){
   .wrap{
-    padding:16px 12px 56px;
+    padding:18px 12px 56px;
   }
 
   .hero{
     padding:22px 14px 28px;
   }
 
-  .hero-top{
-    gap:8px;
+  .hero-row-top{
+    gap:14px;
   }
 
-  .hero-line1{
-    font-size:clamp(46px, 15vw, 68px);
+  .hero-line{
+    font-size:clamp(44px, 15vw, 82px);
   }
 
-  .hero-line2{
-    font-size:clamp(34px, 11.5vw, 60px);
-    margin-top:8px;
-    margin-left:clamp(8px, 4vw, 22px);
+  .hero-line2-wrap{
+    margin-top:22px;
   }
 
   .hero-sub{
-    font-size:clamp(9px, 2.6vw, 11px);
-    margin-top:8px;
+    font-size:clamp(11px, 3.25vw, 16px);
+    margin-top:10px;
+    margin-left:8px;
   }
 
   .description{
     font-size:14px;
-    line-height:1.75;
+    line-height:1.8;
+  }
+}
+
+@media (max-width:420px){
+  .hero{
+    padding:20px 12px 26px;
+  }
+
+  .hero-row-top{
+    gap:12px;
+  }
+
+  .hero-line{
+    font-size:clamp(40px, 14.6vw, 64px);
+  }
+
+  .hero-line2-wrap{
+    margin-top:26px; /* 좁은 화면에서 간격 더 확대 */
+  }
+
+  .hero-sub{
+    font-size:clamp(10px, 3vw, 13px);
+    margin-top:9px;
   }
 }
 </style>
@@ -243,28 +270,21 @@ function goLibrary(title){
   <!-- HERO -->
   <div class="hero">
     <div class="hero-head">
-      <div class="hero-top">
-        <h1 class="hero-main hero-line1">미래가</h1>
+      <div class="hero-row-top">
+        <h1 class="hero-line hero-line1">미래가</h1>
         <div class="hero-sub">AI 시대를 준비하는 인문학</div>
       </div>
-      <h1 class="hero-main hero-line2">도착했습니다.</h1>
+
+      <div class="hero-line2-wrap">
+        <h1 class="hero-line hero-line2">도착했습니다.</h1>
+      </div>
     </div>
 
     <div class="description">
-      <p>
-        AI는 인간보다 더 빠르게 계산하고 더 많은 정보를 기억합니다.
-        그렇다면 우리는 무엇을 생각해야 할까요?
-      </p>
-      <p>
-        이미 우리 곁에 도착한 AI 시대, 인문학은 묻습니다.<br>
-        인간다움이란 무엇인가.
-      </p>
-      <p>
-        ‘이미 도착한 미래’<br>
-        ‘인간이라는 질문’<br>
-        ‘공존을 준비하다’<br>
-        AI 시대를 이해하는 세 가지 인문학적 시선을 소개합니다.
-      </p>
+      <p>AI는 인간보다 더 빠르게 계산하고 더 많은 정보를 기억합니다.</p>
+      <p>그렇다면 우리는 무엇을 생각해야 할까요?</p>
+      <p>이미 우리 곁에 도착한 AI 시대.</p>
+      <p>AI 시대를 이해하는 세 가지 인문학적 시선을 소개합니다.</p>
     </div>
   </div>
 
@@ -277,7 +297,7 @@ function goLibrary(title){
     <div class="section-title">🚀 이미 도착한 미래 <span></span> AI가 바꾸는 세계</div>
     <div class="grid">
       <div class="card" onclick="goLibrary('어느날 미래가 도착했다')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788936480837.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788936480837.jpg" alt="어느날 미래가 도착했다 표지">
         <div class="info">
           <div class="title">어느날 미래가 도착했다</div>
           <div class="author">우숙영</div>
@@ -286,7 +306,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('AI는 인간을 먹고 자란다')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788965967149.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788965967149.jpg" alt="AI는 인간을 먹고 자란다 표지">
         <div class="info">
           <div class="title">AI는 인간을 먹고 자란다</div>
           <div class="author">마크 그레이엄 외</div>
@@ -295,7 +315,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('경험의 멸종')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167742063.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167742063.jpg" alt="경험의 멸종 표지">
         <div class="info">
           <div class="title">경험의 멸종</div>
           <div class="author">크리스틴 로젠</div>
@@ -304,7 +324,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('안티 사피엔스')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167374288.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167374288.jpg" alt="안티 사피엔스 표지">
         <div class="info">
           <div class="title">안티 사피엔스</div>
           <div class="author">이정명</div>
@@ -319,7 +339,7 @@ function goLibrary(title){
     <div class="section-title">🧠 인간이라는 질문 <span></span> AI 시대의 인간다움</div>
     <div class="grid">
       <div class="card" onclick="goLibrary('AI, 인문학에 길을 묻다')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791173351396.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791173351396.jpg" alt="AI, 인문학에 길을 묻다 표지">
         <div class="info">
           <div class="title">AI, 인문학에 길을 묻다</div>
           <div class="author">최재운</div>
@@ -328,7 +348,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('도덕적인 AI')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791194330639.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791194330639.jpg" alt="도덕적인 AI 표지">
         <div class="info">
           <div class="title">도덕적인 AI</div>
           <div class="author">월터 시넛암스트롱 외</div>
@@ -337,7 +357,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('낯섦과 공존')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791165384630.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791165384630.jpg" alt="낯섦과 공존 표지">
         <div class="info">
           <div class="title">낯섦과 공존</div>
           <div class="author">김태원</div>
@@ -346,7 +366,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('기억의 낙원')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788901285498.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788901285498.jpg" alt="기억의 낙원 표지">
         <div class="info">
           <div class="title">기억의 낙원</div>
           <div class="author">김상균</div>
@@ -361,7 +381,7 @@ function goLibrary(title){
     <div class="section-title">🤝 공존을 준비하다 <span></span> AI와 함께 살아갈 미래</div>
     <div class="grid">
       <div class="card" onclick="goLibrary('AI를 압도하는 내면 경쟁력')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191462357.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191462357.jpg" alt="AI를 압도하는 내면 경쟁력 표지">
         <div class="info">
           <div class="title">AI를 압도하는 내면 경쟁력</div>
           <div class="author">이헌주</div>
@@ -370,7 +390,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('생각의 주도권을 디자인하라')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791194508236.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791194508236.jpg" alt="생각의 주도권을 디자인하라 표지">
         <div class="info">
           <div class="title">생각의 주도권을 디자인하라</div>
           <div class="author">박용후</div>
@@ -379,7 +399,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('개의 설계사')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791166687372.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791166687372.jpg" alt="개의 설계사 표지">
         <div class="info">
           <div class="title">개의 설계사</div>
           <div class="author">단요</div>
@@ -388,7 +408,7 @@ function goLibrary(title){
       </div>
 
       <div class="card" onclick="goLibrary('나 같은 기계들')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954694063.jpg">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954694063.jpg" alt="나 같은 기계들 표지">
         <div class="info">
           <div class="title">나 같은 기계들</div>
           <div class="author">이언 매큐언</div>
