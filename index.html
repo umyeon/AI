@@ -87,8 +87,8 @@ body{
 
 .hero-sub{
   flex:0 0 auto;
-  margin-top:27px;      /* 조금 더 아래 */
-  margin-left:4px;      /* 조금 더 오른쪽 */
+  margin-top:35px;                 /* 아래로 조금 더 */
+  transform:translateX(-10px);     /* 왼쪽으로 조금 더 */
   font-size:clamp(16px, 3.7vw, 25px);
   line-height:1.15;
   color:#d8d8dc;
@@ -99,11 +99,14 @@ body{
 /* 설명 영역 */
 .description{
   margin-top:10px;
-  max-width:520px;      /* 너무 긴 한 줄 방지 */
+  max-width:31ch;                  /* 한 줄 폭 조정 */
   font-size:16px;
-  line-height:2;
+  line-height:1.95;
   color:#7a7f86;
   letter-spacing:-0.01em;
+  word-break:keep-all;             /* 단어/문장 가독성 */
+  overflow-wrap:normal;
+  text-wrap:pretty;
 }
 
 .description p{
@@ -233,8 +236,8 @@ body{
 
   .hero-sub{
     font-size:clamp(14px, 3.9vw, 19px);
-    margin-top:22px;
-    margin-left:2px;
+    margin-top:28px;
+    transform:translateX(-8px);
   }
 
   .hero-head{
@@ -242,9 +245,9 @@ body{
   }
 
   .description{
-    max-width:420px;
+    max-width:29ch;
     font-size:15px;
-    line-height:1.92;
+    line-height:1.9;
   }
 }
 
@@ -267,8 +270,8 @@ body{
 
   .hero-sub{
     font-size:clamp(12.5px, 3.7vw, 16px);
-    margin-top:21px;
-    margin-left:1px;
+    margin-top:26px;
+    transform:translateX(-6px);
   }
 
   .hero-head{
@@ -276,9 +279,9 @@ body{
   }
 
   .description{
-    max-width:300px;   /* 모바일에서 줄 길이 축소 */
+    max-width:27ch;
     font-size:14.5px;
-    line-height:1.9;
+    line-height:1.88;
   }
 }
 </style>
@@ -312,10 +315,10 @@ function goLibrary(title){
 
     <div class="description">
       <p>
-        인간보다 더 빠르게 계산하고 더 많은 정보를 기억합니다.
+        AI는 인간보다 더 빠르게 계산하고 더 많은 정보를 기억합니다.
       </p>
       <p>
-        <span class="key">무엇을 생각해야 할까요?</span>
+        <span class="key">그렇다면 우리는 무엇을 생각해야 할까요?</span>
       </p>
       <p>
         <span class="key">AI 시대</span>를 이해하는 <span class="key">세 가지 인문학적 시선</span>을 소개합니다.
