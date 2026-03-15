@@ -87,8 +87,8 @@ body{
 
 .hero-sub{
   flex:0 0 auto;
-  margin-top:35px;                 /* 아래로 조금 더 */
-  transform:translateX(-10px);     /* 왼쪽으로 조금 더 */
+  margin-top:48px;                 /* 아래로 더 이동 */
+  transform:translateX(-22px);     /* 좌측으로 더 이동 */
   font-size:clamp(16px, 3.7vw, 25px);
   line-height:1.15;
   color:#d8d8dc;
@@ -99,12 +99,12 @@ body{
 /* 설명 영역 */
 .description{
   margin-top:10px;
-  max-width:31ch;                  /* 한 줄 폭 조정 */
+  max-width:31ch;
   font-size:16px;
   line-height:1.95;
   color:#7a7f86;
   letter-spacing:-0.01em;
-  word-break:keep-all;             /* 단어/문장 가독성 */
+  word-break:keep-all;
   overflow-wrap:normal;
   text-wrap:pretty;
 }
@@ -119,6 +119,7 @@ body{
 
 .description .key{
   color:#f1f3f5;
+  font-weight:700;
 }
 
 .description .em{
@@ -133,13 +134,13 @@ body{
   font-size:14px;
   text-align:center;
   color:#e5e7eb;
-  margin:12px 0 42px 0;
+  margin:32px 0 28px 0; /* 위는 더 내리고, 아래는 줄임 */
   background:#0c0c0c;
 }
 
 /* 섹션 */
 .section{
-  margin-top:80px;
+  margin-top:64px; /* 기존보다 위로 */
 }
 
 .section-title{
@@ -236,8 +237,8 @@ body{
 
   .hero-sub{
     font-size:clamp(14px, 3.9vw, 19px);
-    margin-top:28px;
-    transform:translateX(-8px);
+    margin-top:38px;
+    transform:translateX(-16px);
   }
 
   .hero-head{
@@ -248,6 +249,14 @@ body{
     max-width:29ch;
     font-size:15px;
     line-height:1.9;
+  }
+
+  .notice{
+    margin:28px 0 24px 0;
+  }
+
+  .section{
+    margin-top:56px;
   }
 }
 
@@ -270,8 +279,8 @@ body{
 
   .hero-sub{
     font-size:clamp(12.5px, 3.7vw, 16px);
-    margin-top:26px;
-    transform:translateX(-6px);
+    margin-top:34px;
+    transform:translateX(-12px);
   }
 
   .hero-head{
@@ -282,6 +291,14 @@ body{
     max-width:27ch;
     font-size:14.5px;
     line-height:1.88;
+  }
+
+  .notice{
+    margin:24px 0 22px 0;
+  }
+
+  .section{
+    margin-top:52px;
   }
 }
 </style>
@@ -317,9 +334,12 @@ function goLibrary(title){
       <p>
         AI는 인간보다 더 빠르게 계산하고 더 많은 정보를 기억합니다.
       </p>
+
       <p>
-        <span class="key">그렇다면 우리는 무엇을 생각해야 할까요?</span>
+        이미 우리 곁에 도착한 <span class="key">AI 시대</span>,<br>
+        우리는 <span class="key">무엇을 생각해야 할까요?</span>
       </p>
+
       <p>
         <span class="key">AI 시대</span>를 이해하는 <span class="key">세 가지 인문학적 시선</span>을 소개합니다.
       </p>
