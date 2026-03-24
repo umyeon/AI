@@ -55,7 +55,7 @@ body{
   align-items:center;
   gap:10px;
   padding:8px 14px;
-  margin-bottom:40px; /* 태그와 메인타이틀 간격 정리 */
+  margin-bottom:40px;
   background:#7ee7ff;
   color:#081217;
   border-radius:999px;
@@ -75,7 +75,7 @@ body{
 }
 
 .hero-head{
-  margin-bottom:46px; /* 타이틀과 설명 사이 리듬 정리 */
+  margin-bottom:46px;
 }
 
 .hero-row-top{
@@ -154,13 +154,13 @@ body{
   font-size:14px;
   text-align:center;
   color:#e5e7eb;
-  margin:42px 0 34px 0; /* 설명 아래는 넉넉하게, 소제목과는 덜 멀게 */
+  margin:42px 0 34px 0;
   background:#0c0c0c;
 }
 
 /* 섹션 */
 .section{
-  margin-top:58px; /* 섹션 간 리듬 통일 */
+  margin-top:58px;
 }
 
 .section:first-of-type{
@@ -409,66 +409,33 @@ function goLibrary(title){
 
     <div class="description">
       <p>
-        AI는 인간보다 더 빠르게 계산하고 더 많은 정보를 기억합니다.
+        AI는 인간보다 더 빠르게 계산하고, 더 많은 정보를 기억합니다.
       </p>
 
       <p>
-        이미 우리 곁에 도착한 <span class="key">AI 시대</span>, 우리는 <span class="key">무엇을 생각해야 할까요?</span>
+        그렇다면 우리는 무엇을 생각해야 할까요?
       </p>
 
       <p>
-        AI 시대를 이해하는 <span class="key">세 가지 인문학적 시선</span>을 소개합니다.
+        이미 우리 곁에 도착한 AI 시대를 이해하기 위해,<br>
+        인문학은 다시 질문을 던집니다.
+      </p>
+
+      <p>
+        <span class="key">우리는 무엇을 지키고, 무엇을 선택할 것인가.</span>
+      </p>
+
+      <p>
+        이 질문을 따라, AI 시대를 바라보는 세 가지 시선을 소개합니다.
       </p>
     </div>
   </div>
 
   <div class="notice">
-    📌 표지를 클릭하면 책 제목이 복사되고 도서관 검색 페이지로 이동합니다.
+    📌 표지를 클릭하면 책 제목이 복사되고<br>도서관 페이지로 이동합니다.
   </div>
 
   <!-- SECTION 1 -->
-  <section class="section">
-    <div class="section-title">🚀 이미 도착한 미래 <span></span> AI가 바꾸는 세계</div>
-    <div class="grid">
-      <div class="card" onclick="goLibrary('어느날 미래가 도착했다')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788936480837.jpg" alt="어느날 미래가 도착했다 표지">
-        <div class="info">
-          <div class="title">어느날 미래가 도착했다</div>
-          <div class="author">우숙영</div>
-          <div class="call">📚 001.3-우56ㅇ</div>
-        </div>
-      </div>
-
-      <div class="card" onclick="goLibrary('AI는 인간을 먹고 자란다')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788965967149.jpg" alt="AI는 인간을 먹고 자란다 표지">
-        <div class="info">
-          <div class="title">AI는 인간을 먹고 자란다</div>
-          <div class="author">마크 그레이엄 외</div>
-          <div class="call">📚 321.5-그294ㅇ</div>
-        </div>
-      </div>
-
-      <div class="card" onclick="goLibrary('경험의 멸종')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167742063.jpg" alt="경험의 멸종 표지">
-        <div class="info">
-          <div class="title">경험의 멸종</div>
-          <div class="author">크리스틴 로젠</div>
-          <div class="call">📚 331.544-로74ㄱ</div>
-        </div>
-      </div>
-
-      <div class="card" onclick="goLibrary('안티 사피엔스')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167374288.jpg" alt="안티 사피엔스 표지">
-        <div class="info">
-          <div class="title">안티 사피엔스</div>
-          <div class="author">이정명</div>
-          <div class="call">📚 813.7-이74ㅇ</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 2 -->
   <section class="section">
     <div class="section-title">🧠 인간이라는 질문 <span></span> AI 시대의 인간다움</div>
     <div class="grid">
@@ -505,6 +472,48 @@ function goLibrary(title){
           <div class="title">기억의 낙원</div>
           <div class="author">김상균</div>
           <div class="call">📚 813.7-김52ㄱ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section">
+    <div class="section-title">🚀 이미 도착한 미래 <span></span> AI가 바꾸는 세계</div>
+    <div class="grid">
+      <div class="card" onclick="goLibrary('어느날 미래가 도착했다')">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788936480837.jpg" alt="어느날 미래가 도착했다 표지">
+        <div class="info">
+          <div class="title">어느날 미래가 도착했다</div>
+          <div class="author">우숙영</div>
+          <div class="call">📚 001.3-우56ㅇ</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goLibrary('AI는 인간을 먹고 자란다')">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788965967149.jpg" alt="AI는 인간을 먹고 자란다 표지">
+        <div class="info">
+          <div class="title">AI는 인간을 먹고 자란다</div>
+          <div class="author">마크 그레이엄 외</div>
+          <div class="call">📚 321.5-그294ㅇ</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goLibrary('경험의 멸종')">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167742063.jpg" alt="경험의 멸종 표지">
+        <div class="info">
+          <div class="title">경험의 멸종</div>
+          <div class="author">크리스틴 로젠</div>
+          <div class="call">📚 331.544-로74ㄱ</div>
+        </div>
+      </div>
+
+      <div class="card" onclick="goLibrary('안티 사피엔스')">
+        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167374288.jpg" alt="안티 사피엔스 표지">
+        <div class="info">
+          <div class="title">안티 사피엔스</div>
+          <div class="author">이정명</div>
+          <div class="call">📚 813.7-이74ㅇ</div>
         </div>
       </div>
     </div>
