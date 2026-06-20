@@ -1,566 +1,432 @@
-<!doctype html>
-<html lang="ko">
+<!DOCTYPE html>
+<html lang='ko'>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>미래가 도착했습니다</title>
-
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>AI 시대의 노동</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 <style>
-/* Gmarket Sans */
-@font-face {
-  font-family: 'GmarketSans';
-  font-weight: 300;
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+/* 전반적인 무드 및 배경색 정돈 */
+body {
+  margin: 0;
+  background: #f8f8f6;
+  color: #242424;
+  font-family: 'Pretendard', sans-serif;
+  letter-spacing: -0.02em;
 }
-@font-face {
-  font-family: 'GmarketSans';
-  font-weight: 500;
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+.wrap {
+  max-width: 720px;
+  margin: auto;
+  padding: 40px 20px 100px;
 }
-@font-face {
-  font-family: 'GmarketSans';
+
+/* --- HERO SECTION (image_b2abdf.png 매거진 그리드 스타일로 전면 개편) --- */
+.hero {
+  position: relative;
+  background: #fdfdfb;
+  border: 1px solid #d1d1ca;
+  margin-bottom: 60px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 초록색 그라데이션 + 종이 노이즈 질감 구현 */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(135deg, rgba(220, 247, 220, 0.9) 0%, rgba(240, 252, 240, 0.4) 50%, rgba(253, 253, 251, 0) 100%),
+    radial-gradient(circle at 10% 40%, rgba(141, 230, 141, 0.45) 0%, transparent 60%);
+  z-index: 1;
+}
+
+/* SVG 노이즈 오버레이 (텍스처 필터와 결합) */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.035; /* 은은한 노이즈 종이 질감 */
+  mix-blend-mode: multiply;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 격자 구조의 라인 보더 상단 영역 */
+.hero-top-grid {
+  display: flex;
+  border-bottom: 1px solid #d1d1ca;
+}
+.hero-title-box {
+  flex: 1;
+  padding: 40px 24px;
+}
+
+/* 꽉 차고 대담한 편집숍 감성의 타이포그래피 */
+.hero-title {
+  font-size: clamp(38px, 8vw, 58px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: #111110;
+  margin: 0;
+  word-break: keep-all;
+}
+
+/* 세로형 뱃지/브랜드 레터링 레이아웃 구현 */
+.side-brand-text {
+  width: 45px;
+  border-left: 1px solid #d1d1ca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbfbfa;
+}
+.side-brand-text span {
+  transform: rotate(90deg);
+  white-space: nowrap;
+  font-size: 10px;
   font-weight: 700;
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+  color: #7a7a75;
+  letter-spacing: 0.2em;
 }
 
-*{
-  box-sizing:border-box;
+/* 하단 큐레이션 서문/소개글 영역 그리드 분할 */
+.hero-bottom-grid {
+  display: flex;
+  background: rgba(255, 255, 255, 0.4);
+}
+.hero-desc-box {
+  flex: 1;
+  padding: 32px 24px;
+}
+.hero-question {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #111;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+.hero-text {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #555550;
+}
+.hero-text p {
+  margin: 0 0 8px 0;
+}
+.hero-text p:last-child {
+  margin-bottom: 0;
 }
 
-body{
-  margin:0;
-  background:#000;
-  color:#f5f5f5;
-  font-family:'GmarketSans', sans-serif;
+/* 이미지 요소 속 데코레이션 스파클 포인트 */
+.grid-deco {
+  width: 45px;
+  border-left: 1px solid #d1d1ca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.sparkle-icon {
+  font-size: 14px;
+  color: #3a3a35;
+  font-weight: 300;
 }
 
-.wrap{
-  max-width:720px;
-  margin:auto;
-  padding:28px 16px 64px;
+/* --- 안내 문구 바 --- */
+.notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 48px 0 24px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e4e4e0;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #555;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
 }
 
-/* HERO */
-.hero{
-  background:#111214;
-  border-radius:16px;
-  padding:28px 18px 42px;
-  margin-bottom:0;
-  overflow:hidden;
+/* --- SECTION & CARDS --- */
+.section {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid #e4e4e0;
+}
+.section-no {
+  font-size: 11px;
+  font-weight: 600;
+  color: #8a8a86;
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+}
+.section-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111;
+}
+.section-desc {
+  font-size: 14px;
+  color: #72726e;
+  margin: 4px 0 20px;
 }
 
-.hero-tag{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:8px 14px;
-  margin-bottom:40px;
-  background:#7ee7ff;
-  color:#081217;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:700;
-  line-height:1;
-  letter-spacing:-0.02em;
+/* 카드 레이아웃 */
+.card {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e4e4e0;
+  border-radius: 16px;
+  padding: 18px;
+  margin: 14px 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
 
-.hero-tag-bar{
-  display:inline-block;
-  width:2px;
-  height:14px;
-  background:#081217;
-  border-radius:0;
-  flex:0 0 auto;
+/* 도서 이미지 호버 효과 */
+.cover {
+  width: 76px;
+  height: 108px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+.card:hover .cover {
+  transform: scale(1.03);
 }
 
-.hero-head{
-  margin-bottom:46px;
+/* 도서 정보 텍스트 */
+.card-info {
+  flex: 1;
 }
-
-.hero-row-top{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:10px;
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6px;
+  line-height: 1.4;
 }
-
-.hero-line{
-  margin:0;
-  font-weight:700;
-  line-height:0.9;
-  letter-spacing:-0.06em;
-  color:#f2f2f2;
-  font-size:clamp(50px, 16vw, 108px);
-  white-space:nowrap;
+.author {
+  font-size: 13.5px;
+  color: #666;
+  margin-bottom: 6px;
 }
-
-.hero-line1{
-  text-align:left;
-}
-
-.hero-line2-wrap{
-  display:flex;
-  justify-content:flex-end;
-  margin-top:18px;
-}
-
-.hero-line2{
-  text-align:right;
-}
-
-.hero-sub{
-  flex:0 0 auto;
-  margin-top:48px;
-  transform:translateX(-22px);
-  font-size:clamp(16px, 3.7vw, 25px);
-  line-height:1.15;
-  color:#d8d8dc;
-  white-space:nowrap;
-  letter-spacing:-0.03em;
-}
-
-/* 설명 영역 */
-.description{
-  margin-top:0;
-  max-width:35ch;
-  font-size:17px;
-  line-height:1.92;
-  color:#8d939b;
-  letter-spacing:-0.012em;
-  word-break:keep-all;
-  overflow-wrap:normal;
-  text-wrap:pretty;
-}
-
-.description p{
-  margin:0 0 24px 0;
-}
-
-.description p:last-child{
-  margin-bottom:0;
-}
-
-.description .key{
-  color:#f1f3f5;
-  font-weight:700;
-}
-
-/* 클릭 안내 */
-.notice{
-  border:1px solid #3a3a3a;
-  border-radius:12px;
-  padding:12px 16px;
-  font-size:14px;
-  text-align:center;
-  color:#e5e7eb;
-  margin:42px 0 34px 0;
-  background:#0c0c0c;
-}
-
-/* 섹션 */
-.section{
-  margin-top:58px;
-}
-
-.section:first-of-type{
-  margin-top:0;
-}
-
-.section-title{
-  font-size:22px;
-  font-weight:500;
-  margin-bottom:20px;
-  line-height:1.3;
-  letter-spacing:-0.02em;
-}
-
-.section-title span{
-  display:inline-block;
-  width:2px;
-  height:20px;
-  background:#fff;
-  margin:0 6px;
-  vertical-align:middle;
-  border-radius:0;
-}
-
-/* 카드 */
-.grid{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-.card{
-  display:flex;
-  gap:12px;
-  background:#0b0b0b;
-  border:1px solid #222;
-  border-radius:12px;
-  padding:12px;
-  align-items:center;
-  cursor:pointer;
-  transition:all .2s;
-}
-
-.card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 14px rgba(0,0,0,0.5);
-}
-
-.cover{
-  width:70px;
-  height:96px;
-  object-fit:contain;
-  border-radius:6px;
-  background:#000;
-}
-
-.info{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-}
-
-.title{
-  font-size:18px;
-  font-weight:500;
-}
-
-.author{
-  font-size:14px;
-  color:#a1a1aa;
-}
-
-.call{
-  font-size:14px;
-  color:#9ca3af;
-}
-
-/* 모바일 대응 */
-@media (max-width:560px){
-  .wrap{
-    padding:20px 12px 56px;
-  }
-
-  .hero{
-    padding:22px 14px 36px;
-  }
-
-  .hero-tag{
-    font-size:12px;
-    padding:7px 12px;
-    gap:8px;
-    margin-bottom:30px;
-  }
-
-  .hero-tag-bar{
-    width:2px;
-    height:13px;
-  }
-
-  .hero-row-top{
-    gap:8px;
-  }
-
-  .hero-line{
-    font-size:clamp(44px, 15vw, 82px);
-  }
-
-  .hero-line2-wrap{
-    margin-top:18px;
-  }
-
-  .hero-sub{
-    font-size:clamp(15px, 4.05vw, 19px);
-    margin-top:38px;
-    transform:translateX(-16px);
-    letter-spacing:-0.035em;
-  }
-
-  .hero-head{
-    margin-bottom:38px;
-  }
-
-  .description{
-    max-width:36ch;
-    font-size:15.8px;
-    line-height:1.88;
-  }
-
-  .notice{
-    margin:36px 0 28px 0;
-  }
-
-  .section{
-    margin-top:52px;
-  }
-
-  .section-title{
-    font-size:20px;
-    margin-bottom:18px;
-  }
-
-  .section-title span{
-    width:2px;
-    height:18px;
-  }
-}
-
-@media (max-width:420px){
-  .hero{
-    padding:20px 12px 34px;
-  }
-
-  .hero-tag{
-    font-size:11px;
-    padding:7px 11px;
-    gap:7px;
-    margin-bottom:26px;
-  }
-
-  .hero-tag-bar{
-    width:2px;
-    height:12px;
-  }
-
-  .hero-row-top{
-    gap:6px;
-  }
-
-  .hero-line{
-    font-size:clamp(40px, 14.6vw, 64px);
-  }
-
-  .hero-line2-wrap{
-    margin-top:20px;
-  }
-
-  .hero-sub{
-    font-size:clamp(13.5px, 3.95vw, 17px);
-    margin-top:34px;
-    transform:translateX(-12px);
-    letter-spacing:-0.04em;
-  }
-
-  .hero-head{
-    margin-bottom:34px;
-  }
-
-  .description{
-    max-width:34ch;
-    font-size:15px;
-    line-height:1.84;
-  }
-
-  .notice{
-    margin:32px 0 24px 0;
-  }
-
-  .section{
-    margin-top:48px;
-  }
-
-  .section-title{
-    font-size:19px;
-    margin-bottom:16px;
-  }
-
-  .section-title span{
-    width:2px;
-    height:17px;
-  }
+.call {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #2b7a4b;
+  background: #edf7f1;
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 </style>
-
-<script>
-function goLibrary(title){
-  try{
-    navigator.clipboard.writeText(title)
-  }catch(e){}
-  const query = encodeURIComponent(title)
-  window.open(`https://umyeon.seocholib.or.kr/TotalSearch?keyword=${query}`, '_blank')
-}
-</script>
 </head>
-
 <body>
-<main class="wrap">
+<main class='wrap'>
+  <!-- 기획전 인쇄물 감성의 매거진 그리드 히어로 섹션 -->
+  <section class='hero'>
+    <div class="hero-inner">
+      
+      <!-- 상단 격자 레이어 (타이틀 + 우측 세로 브랜드 텍스트) -->
+      <div class="hero-top-grid">
+        <div class="hero-title-box">
+          <h1 class='hero-title'>AI 시대의 노동,<br>일의 미래를 묻다</h1>
+        </div>
+        <div class="side-brand-text">
+          <span>우면도서관</span>
+        </div>
+      </div>
+      
+      <!-- 하단 격자 레이어 (소개글 + 우측 스파클 데코) -->
+      <div class="hero-bottom-grid">
+        <div class="hero-desc-box">
+          <h2 class='hero-question'>AI가 일하는 시대, 인간은 무엇을 할 것인가</h2>
+          <div class='hero-text'>
+            <p>인공지능은 우리의 일자리를 빼앗을까요, 새로운 기회를 만들어낼까요?</p>
+            <p>AI의 발전은 우리의 노동 환경과 필요한 역량을 빠르게 변화시키고 있습니다.</p>
+            <p>이 책들과 함께 AI가 가져올 노동의 변화와 미래를 살펴보며, 우리가 나아갈 방향을 생각해 봅니다.</p>
+          </div>
+        </div>
+        <div class="grid-deco">
+          <span class="sparkle-icon">✦</span>
+        </div>
+      </div>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-tag">
-      <span>우면도서관 북큐레이션</span>
-      <span class="hero-tag-bar" aria-hidden="true"></span>
-      <span>종합자료실</span>
     </div>
+  </section>
 
-    <div class="hero-head">
-      <div class="hero-row-top">
-        <h1 class="hero-line hero-line1">미래가</h1>
-        <div class="hero-sub">AI 시대를 준비하는 인문학</div>
-      </div>
+  <div class='notice'>📚 책 표지를 클릭하면 해당 도서를 바로 찾아볼 수 있습니다.</div>
 
-      <div class="hero-line2-wrap">
-        <h1 class="hero-line hero-line2">도착했습니다</h1>
+  <!-- SECTION 01 -->
+  <section class='section'>
+    <div class='section-no'>SECTION 01</div>
+    <div class='section-title'>변화</div>
+    <div class='section-desc'>AI는 우리의 일을 어떻게 바꾸는가</div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/426074405/426074403/9788936481247' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788936481247.jpg' alt='AI가 나보다 일을 잘할 때'>
+      </a>
+      <div class="card-info">
+        <div class='title'>AI가 나보다 일을 잘할 때</div>
+        <div class='author'>김대식 외</div>
+        <div class='call'>321.52 김23ㅇ</div>
       </div>
     </div>
-
-    <div class="description">
-      <p>
-        AI는 인간보다 더 빠르게 계산하고,<br> 더 많은 정보를 기억합니다.
-      </p>
-
-      <p>
-        그렇다면 우리는 무엇을 생각해야 할까요?
-      </p>
-
-      <p>
-        이미 우리 곁에 도착한 AI 시대를 이해하기 위해,<br>
-        인문학은 다시 질문을 던집니다.
-      </p>
-
-      <p>
-        <span class="key">우리는 무엇을 지키고, 무엇을 선택할 것인가.</span>
-      </p>
-
-      <p>
-        이 질문을 따라, AI 시대를 바라보는<br> 세 가지 시선을 소개합니다.
-      </p>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417435259/417435257/9788962626605' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788962626605.jpg' alt='먼저 온 미래'>
+      </a>
+      <div class="card-info">
+        <div class='title'>먼저 온 미래</div>
+        <div class='author'>장강명</div>
+        <div class='call'>331.54 장12ㅁ</div>
+      </div>
     </div>
-  </div>
-
-  <div class="notice">
-    📌 표지를 클릭하면 책 제목이 복사되고<br>도서관 페이지로 이동합니다.
-  </div>
-
-  <!-- SECTION 1 : 이미 도착한 미래 -->
-  <section class="section">
-    <div class="section-title">🚀 이미 도착한 미래 <span></span> AI가 바꾸는 세계</div>
-    <div class="grid">
-      <div class="card" onclick="goLibrary('어느날 미래가 도착했다')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788936480837.jpg" alt="어느날 미래가 도착했다 표지">
-        <div class="info">
-          <div class="title">어느날 미래가 도착했다</div>
-          <div class="author">우숙영</div>
-          <div class="call">📚 001.3-우56ㅇ</div>
-        </div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417435075/417435055/9791192488776' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791192488776.jpg' alt='휴머노이드 : 인간을 닮은 기계, 공존의 시작'>
+      </a>
+      <div class="card-info">
+        <div class='title'>휴머노이드 : 인간을 닮은 기계, <br>공존의 시작</div>
+        <div class='author'>김상균</div>
+        <div class='call'>559.962 김52ㅎ</div>
       </div>
-
-      <div class="card" onclick="goLibrary('AI는 인간을 먹고 자란다')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788965967149.jpg" alt="AI는 인간을 먹고 자란다 표지">
-        <div class="info">
-          <div class="title">AI는 인간을 먹고 자란다</div>
-          <div class="author">마크 그레이엄 외</div>
-          <div class="call">📚 321.5-그294ㅇ</div>
-        </div>
-      </div>
-
-      <div class="card" onclick="goLibrary('경험의 멸종')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167742063.jpg" alt="경험의 멸종 표지">
-        <div class="info">
-          <div class="title">경험의 멸종</div>
-          <div class="author">크리스틴 로젠</div>
-          <div class="call">📚 331.544-로74ㄱ</div>
-        </div>
-      </div>
-
-      <div class="card" onclick="goLibrary('안티 사피엔스')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167374288.jpg" alt="안티 사피엔스 표지">
-        <div class="info">
-          <div class="title">안티 사피엔스</div>
-          <div class="author">이정명</div>
-          <div class="call">📚 813.7-이74ㅇ</div>
-        </div>
+    </div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417434303/417434293/9791191311686' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191311686.jpg' alt='진격하는 AI와 흔들리는 노동자'>
+      </a>
+      <div class="card-info">
+        <div class='title'>진격하는 AI와 흔들리는 노동자</div>
+        <div class='author'>이재열 외</div>
+        <div class='call'>321.5 롤294ㅈ</div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2 : 인간이라는 질문 -->
-  <section class="section">
-    <div class="section-title">🧠 인간이라는 질문 <span></span> AI 시대의 인간다움</div>
-    <div class="grid">
-      <div class="card" onclick="goLibrary('AI, 인문학에 길을 묻다')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791173351396.jpg" alt="AI, 인문학에 길을 묻다 표지">
-        <div class="info">
-          <div class="title">AI, 인문학에 길을 묻다</div>
-          <div class="author">최재운</div>
-          <div class="call">📚 001.3-최73ㅇ</div>
-        </div>
+  <!-- SECTION 02 -->
+  <section class='section'>
+    <div class='section-no'>SECTION 02</div>
+    <div class='section-title'>적응</div>
+    <div class='section-desc'>AI 시대를 살아가는 새로운 역량</div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417433341/417433319/9791193282342' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791193282342.jpg' alt='AI 전략수업 : AI 시대의 유일한 인간 생존 로드맵'>
+      </a>
+      <div class="card-info">
+        <div class='title'>AI 전략수업 : AI 시대의 유일한 <br>인간 생존 로드맵</div>
+        <div class='author'>리더인</div>
+        <div class='call'>004.73 리24ㅇ</div>
       </div>
-
-      <div class="card" onclick="goLibrary('도덕적인 AI')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791194330639.jpg" alt="도덕적인 AI 표지">
-        <div class="info">
-          <div class="title">도덕적인 AI</div>
-          <div class="author">월터 시넛암스트롱 외</div>
-          <div class="call">📚 004.73019-암57ㄷ</div>
-        </div>
+    </div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417435187/417435176/9791193674260' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791193674260.jpg' alt='AI 에이전트 트렌드＆활용백과'>
+      </a>
+      <div class="card-info">
+        <div class='title'>AI 에이전트 트렌드＆활용백과</div>
+        <div class='author'>김덕진 외</div>
+        <div class='call'>004.73 김24ㅇ</div>
       </div>
-
-      <div class="card" onclick="goLibrary('낯섦과 공존')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791165384630.jpg" alt="낯섦과 공존 표지">
-        <div class="info">
-          <div class="title">낯섦과 공존</div>
-          <div class="author">김태원</div>
-          <div class="call">📚 304-김883ㄴ</div>
-        </div>
+    </div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417433342/417433315/9791190488617' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791190488617.jpg' alt='AI 시대의 질문력, 프롬프트 엔지니어링'>
+      </a>
+      <div class="card-info">
+        <div class='title'>AI 시대의 질문력, 프롬프트 <br>엔지니어링</div>
+        <div class='author'>류한석</div>
+        <div class='call'>004.73 류92ㅇ</div>
       </div>
-
-      <div class="card" onclick="goLibrary('기억의 낙원')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788901285498.jpg" alt="기억의 낙원 표지">
-        <div class="info">
-          <div class="title">기억의 낙원</div>
-          <div class="author">김상균</div>
-          <div class="call">📚 813.7-김52ㄱ</div>
-        </div>
+    </div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/423172830/423172828/9791173324253' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791173324253.jpg' alt='AI 시대, 강력한 개인이 온다'>
+      </a>
+      <div class="card-info">
+        <div class='title'>AI 시대, 강력한 개인이 온다</div>
+        <div class='author'>구본권</div>
+        <div class='call'>331.544 구45ㅇ</div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 3 -->
-  <section class="section">
-    <div class="section-title">🤝 공존을 준비하다 <span></span> AI와 함께 살아갈 미래</div>
-    <div class="grid">
-      <div class="card" onclick="goLibrary('AI를 압도하는 내면 경쟁력')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191462357.jpg" alt="AI를 압도하는 내면 경쟁력 표지">
-        <div class="info">
-          <div class="title">AI를 압도하는 내면 경쟁력</div>
-          <div class="author">이헌주</div>
-          <div class="call">📚 181.7-이94ㅇ</div>
-        </div>
+  <!-- SECTION 03 -->
+  <section class='section'>
+    <div class='section-no'>SECTION 03</div>
+    <div class='section-title'>미래</div>
+    <div class='section-desc'>노동의 미래를 상상하다</div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417559632/417559610/9788925577647' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788925577647.jpg' alt='일의 역사'>
+      </a>
+      <div class="card-info">
+        <div class='title'>일의 역사</div>
+        <div class='author'>제임스 수즈먼</div>
+        <div class='call'>321.509 수77ㅇ</div>
       </div>
-
-      <div class="card" onclick="goLibrary('생각의 주도권을 디자인하라')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791194508236.jpg" alt="생각의 주도권을 디자인하라 표지">
-        <div class="info">
-          <div class="title">생각의 주도권을 디자인하라</div>
-          <div class="author">박용후</div>
-          <div class="call">📚 325.211-박65ㅅ</div>
-        </div>
+    </div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417617397/417617370/9791191183030' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791191183030.jpg' alt='새로운 가난이 온다'>
+      </a>
+      <div class="card-info">
+        <div class='title'>새로운 가난이 온다</div>
+        <div class='author'>김만권</div>
+        <div class='call'>334 김32ㅅ</div>
       </div>
-
-      <div class="card" onclick="goLibrary('개의 설계사')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791166687372.jpg" alt="개의 설계사 표지">
-        <div class="info">
-          <div class="title">개의 설계사</div>
-          <div class="author">단요</div>
-          <div class="call">📚 813.7-단65ㄱ</div>
-        </div>
+    </div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417611940/417611920/9791196403850' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791196403850.jpg' alt='노동의 미래와 기본소득 : 21세기 빈곤 없는 사회를 위하여'>
+      </a>
+      <div class="card-info">
+        <div class='title'>노동의 미래와 기본소득 : 21세기<br> 빈곤 없는 사회를 위하여</div>
+        <div class='author'>앤디 스턴 외</div>
+        <div class='call'>321.5 스884ㄴ</div>
       </div>
-
-      <div class="card" onclick="goLibrary('나 같은 기계들')">
-        <img class="cover" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788954694063.jpg" alt="나 같은 기계들 표지">
-        <div class="info">
-          <div class="title">나 같은 기계들</div>
-          <div class="author">이언 매큐언</div>
-          <div class="call">📚 843.6-매876ㄴ</div>
-        </div>
+    </div>
+    
+    <div class='card'>
+      <a href='https://umyeon.seocholib.or.kr/bookDetail/MO/417434372/417434354/9791143003225' target='_blank' rel='noopener noreferrer'>
+        <img class='cover' src='https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791143003225.jpg' alt='AI와 지속 가능한 노동'>
+      </a>
+      <div class="card-info">
+        <div class='title'>AI와 지속 가능한 노동</div>
+        <div class='author'>김주희</div>
+        <div class='call'>321.5 김76ㅇ</div>
       </div>
     </div>
   </section>
-
 </main>
 </body>
 </html>
