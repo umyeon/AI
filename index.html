@@ -20,7 +20,7 @@ body {
   padding: 40px 20px 100px;
 }
 
-/* --- HERO SECTION (image_b2abdf.png 매거진 그리드 스타일로 전면 개편) --- */
+/* --- HERO SECTION (image_b2abdf.png 스타일 반영 전면 수정) --- */
 .hero {
   position: relative;
   background: #fdfdfb;
@@ -30,24 +30,24 @@ body {
   overflow: hidden;
 }
 
-/* 초록색 그라데이션 + 종이 노이즈 질감 구현 */
+/* 이미지 특유의 감각적인 연초록 그라데이션 바탕 레이어 */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background: 
-    linear-gradient(135deg, rgba(220, 247, 220, 0.9) 0%, rgba(240, 252, 240, 0.4) 50%, rgba(253, 253, 251, 0) 100%),
-    radial-gradient(circle at 10% 40%, rgba(141, 230, 141, 0.45) 0%, transparent 60%);
+    linear-gradient(135deg, rgba(220, 247, 220, 0.95) 0%, rgba(240, 252, 240, 0.4) 50%, rgba(253, 253, 251, 0) 100%),
+    radial-gradient(circle at 15% 45%, rgba(141, 230, 141, 0.5) 0%, transparent 65%);
   z-index: 1;
 }
 
-/* SVG 노이즈 오버레이 (텍스처 필터와 결합) */
+/* 이미지 특유의 포스터 스타일 노이즈/종이 질감(Grain) 표현 */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.035; /* 은은한 노이즈 종이 질감 */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
   mix-blend-mode: multiply;
   z-index: 2;
   pointer-events: none;
@@ -60,86 +60,83 @@ body {
   flex-direction: column;
 }
 
-/* 격자 구조의 라인 보더 상단 영역 */
-.hero-top-grid {
+/* [그리드 레이아웃 1층] 대담한 타이틀 영역 + 우측 세로 텍스트 */
+.hero-row-1 {
   display: flex;
   border-bottom: 1px solid #d1d1ca;
 }
-.hero-title-box {
+.title-cell {
   flex: 1;
-  padding: 40px 24px;
+  padding: 44px 24px;
 }
-
-/* 꽉 차고 대담한 편집숍 감성의 타이포그래피 */
 .hero-title {
-  font-size: clamp(38px, 8vw, 58px);
+  font-size: clamp(36px, 8vw, 56px);
   font-weight: 900;
   line-height: 1.15;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
   color: #111110;
   margin: 0;
   word-break: keep-all;
 }
 
-/* 세로형 뱃지/브랜드 레터링 레이아웃 구현 */
-.side-brand-text {
-  width: 45px;
+/* 이미지 우측의 세로 브랜드 레이아웃 반영 */
+.vertical-cell {
+  width: 48px;
   border-left: 1px solid #d1d1ca;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fbfbfa;
+  background: rgba(251, 251, 250, 0.6);
 }
-.side-brand-text span {
+.vertical-cell span {
   transform: rotate(90deg);
   white-space: nowrap;
   font-size: 10px;
   font-weight: 700;
-  color: #7a7a75;
-  letter-spacing: 0.2em;
+  color: #6a6a65;
+  letter-spacing: 0.25em;
 }
 
-/* 하단 큐레이션 서문/소개글 영역 그리드 분할 */
-.hero-bottom-grid {
+/* [그리드 레이아웃 2층] 큐레이션 서문/소개글 영역 + 우측 사방성 데코 */
+.hero-row-2 {
   display: flex;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.25);
 }
-.hero-desc-box {
+.desc-cell {
   flex: 1;
-  padding: 32px 24px;
+  padding: 36px 24px;
 }
 .hero-question {
   font-size: 18px;
   font-weight: 800;
-  line-height: 1.4;
-  color: #111;
-  margin: 0 0 16px 0;
+  line-height: 1.45;
+  color: #1c1c1a;
+  margin: 0 0 18px 0;
   letter-spacing: -0.02em;
 }
 .hero-text {
   font-size: 14px;
-  line-height: 1.75;
-  color: #555550;
+  line-height: 1.8;
+  color: #4a4a45;
 }
 .hero-text p {
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
 }
 .hero-text p:last-child {
   margin-bottom: 0;
 }
 
-/* 이미지 요소 속 데코레이션 스파클 포인트 */
-.grid-deco {
-  width: 45px;
+/* 이미지 속 사방성(★) 심볼 디테일 교차점 반영 */
+.deco-cell {
+  width: 48px;
   border-left: 1px solid #d1d1ca;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
-.sparkle-icon {
-  font-size: 14px;
-  color: #3a3a35;
+.sparkle {
+  font-size: 16px;
+  color: #242420;
   font-weight: 300;
 }
 
@@ -241,23 +238,24 @@ body {
 </head>
 <body>
 <main class='wrap'>
-  <!-- 기획전 인쇄물 감성의 매거진 그리드 히어로 섹션 -->
+  
+  <!-- image_b2abdf.png를 정밀 반영한 격자 그리드 구조의 히어로 영역 -->
   <section class='hero'>
     <div class="hero-inner">
       
-      <!-- 상단 격자 레이어 (타이틀 + 우측 세로 브랜드 텍스트) -->
-      <div class="hero-top-grid">
-        <div class="hero-title-box">
+      <!-- 그리드 1단: 대담한 폰트 타이틀 + 우측 세로형 뱃지 텍스트 -->
+      <div class="hero-row-1">
+        <div class="title-cell">
           <h1 class='hero-title'>AI 시대의 노동,<br>일의 미래를 묻다</h1>
         </div>
-        <div class="side-brand-text">
+        <div class="vertical-cell">
           <span>우면도서관</span>
         </div>
       </div>
       
-      <!-- 하단 격자 레이어 (소개글 + 우측 스파클 데코) -->
-      <div class="hero-bottom-grid">
-        <div class="hero-desc-box">
+      <!-- 그리드 2단: 격자형 소개 서문 박스 + 우측 프레임 스파클 심볼 -->
+      <div class="hero-row-2">
+        <div class="desc-cell">
           <h2 class='hero-question'>AI가 일하는 시대, 인간은 무엇을 할 것인가</h2>
           <div class='hero-text'>
             <p>인공지능은 우리의 일자리를 빼앗을까요, 새로운 기회를 만들어낼까요?</p>
@@ -265,8 +263,8 @@ body {
             <p>이 책들과 함께 AI가 가져올 노동의 변화와 미래를 살펴보며, 우리가 나아갈 방향을 생각해 봅니다.</p>
           </div>
         </div>
-        <div class="grid-deco">
-          <span class="sparkle-icon">✦</span>
+        <div class="deco-cell">
+          <span class="sparkle">✦</span>
         </div>
       </div>
 
